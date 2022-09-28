@@ -11,7 +11,9 @@ fs.readFile("input.txt", { encoding: "utf8", flag: "r" }, function (err, data){
         result = calc(lines[i], lines[i + 1], lines[i + 2]);
         console.log(result);
         result = result.toString() + "\n";
-        fs.writeFileSync("output.txt", result, { flag: "a+" });
+        fs.writeFile("output.txt", result, { flag: "a+" }, function (err) {
+            if (err) throw err;
+          });
         }
     }
 });
